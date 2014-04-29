@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function () {
     "use strict";
 	
@@ -6,40 +9,94 @@ $(document).ready(function () {
 	$("#content").css("min-height",contentHeight);
 	
 	
-	
-
-	
-	$(".navbar-nav > li, .navbar-brand").click(function(){
-		
-		var status = "";
-		var page = $(this).prop('id'); // Hvor skal vi
-		
+	function loadPage(page){
 		$("#content").load(page + ".html", function(response, status, xhr){
 			
-			if(status == "error"){
-				$("#content").html("<div class='row firstrow'><div class='col-xs-10 col-xs-offset-1'><h3>Vi er veldig lei oss, men her er det noe galt</h3></div></div><div id='push'></div>");
+			if (status == "error"){
+				giveError(status, xhr);
 			}
+			
+			switch(page){
+			case "services":
+				createServices();
+				break;
+			case "brokers":
+				createBrokers();
+				break;
+			case "boats":
+				createBoats();
+				break;
+			default:
+				createMain();
+			}
+			
+			// See if there should be any quotes
 			initQuoteLoop();
 		});
+	}
 
+	function createServices(){
+		var source   = $("#list-template").html();
+		var template = Handlebars.compile(source);
+			
+		apiCall("tjenester", false, function(data){
+			console.log(data);
+			$(data).each(function(tjeneste){
+				//console.log(data[tjeneste]);
+				$("#list-group").append(template(data[tjeneste]));			
+			})
+
+		});	
+	}
+	
+	function createMain(){
+		
+	}
+	
+	$(".navbar-nav > li, .navbar-brand").click(function(){
+		var page = $(this).prop('id');
+		loadPage(page);
 	});
 
-	
+	/*
 	$("#content").load("main.html", function(){
 		console.log("Henta main");
+
 		initQuoteLoop();
 	});
-	
+	*/
+	loadPage("main");
 	
 	$("#footer").load("footer.html", function(){
 		console.log("henta footer");	
 	});
 	
-	function apiCall(done){
+	function giveError(error, xhr){
+		$("#content").html("<div class='row firstrow'><div class='col-xs-10 col-xs-offset-1'><h3>Vi er veldig lei oss, men her er det noe galt</h3></div></div><div id='push'></div>");
+		console.warn(error);
+	}
+	
+	function apiCall(src, random, done){
+		console.log("Gjør API-kall");
+		
+		// Random-function
+		function pickRandomProperty(obj) {var result; var count = 0; for (var prop in obj) if (Math.random() < 1/++count)result = prop; return result;}
+		
 		// API-Kall henter data
 		// Må kunne sende random-data til quote
 		// Må kunne plukke spesifikk data til sider osv.
-		done("Aker yachts er det beste firmaet jeg har brukt noen gang!");
+		// done("Aker yachts er det beste firmaet jeg har brukt noen gang!");
+		
+		var jqxhr = $.getJSON( "http://localhost:8888/akeryachts/pw/"+src, function( data, textStatus, jqXHR ) {
+			if(random){
+				var int = pickRandomProperty(data);
+				done(data[int]);
+			} else {
+				done(data);
+			}
+		}).fail(function(jqxhr, textStatus, error){
+			giveError(jqxhr, textStatus, error);
+		});
 	}
 	
 	function initQuoteLoop(){
@@ -55,9 +112,9 @@ $(document).ready(function () {
 	
 	function changeQuote(blockquote) {
 		console.log("Changing blockquote...");
-		apiCall(function(data){		
+		apiCall("sitater",true,function(data){		
 			$(blockquote).fadeOut('slow', function(){
-				$(blockquote).html("<p>"+data+"</p><footer>Lars</footer>");	
+				$(blockquote).html("<p>"+data.sitat+"</p><footer>"+data.forfatter+"</footer>");	
 				$(blockquote).fadeIn('slow');
 			});		
 		});

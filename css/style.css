@@ -56,6 +56,44 @@ body {
 	min-height: 400px;
 }
 
+.firstrow {
+	margin-top: 70px;
+}
+
+/* remove spacing between middle columns */
+.row.no-gutter [class*='col-']:not(:first-child):not(:last-child) {
+  padding-right:0;
+  padding-left:0;
+}
+/* remove right padding from first column */
+.row.no-gutter [class*='col-']:first-child {
+  padding-right:0;
+}
+/* remove left padding from first column */
+.row.no-gutter [class*='col-']:last-child {
+  padding-left:0;
+}
+
+/* SIDEELEMENTER */
+
+ul {
+	list-style-type: none;
+}
+
+.field1{
+	background-color: #fff;
+}
+
+.icon {
+	float: left;
+	margin-right: 2em;
+}
+
+.service {
+	float: left;
+	clear: none;
+}
+
 /* TYPOGRAFI */
 
 .blue {color: #0A5B81;}
