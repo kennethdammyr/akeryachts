@@ -53,12 +53,36 @@ function createServices(){
 	});	
 }
 
+function createBrokers(){
+	var source   = $("#broker-template").html();
+	var template = Handlebars.compile(source);
+	
+	apiCall("meglere", false, 0, function(data){
+		
+		var middle = Math.round(data.length / 2);
+		var i = 0;
+		console.log("MIdten: ",middle);
+		
+		$(data).each(function(megler){
+			if (i == middle){
+				$("#meglere").append("<section class='row megler' id='brokerbg1'><div class='col-xs-10 col-xs-offset-1 firstrow'><blockquote></blockquote></div</section>");
+				$("#meglere").append(template(data[megler]));
+				initQuoteLoop();
+			} else {
+				$("#meglere").append(template(data[megler])).addClass("firstrow");;
+			}
+		 i = i+1;
+		});
+	});
+}
+
 function createMain(){
 	$("#content").addClass("main-bg");
 	
 	// Set height of content to be viewport
 	var navbarHeight = $("#ay-navbar").height();
-	var contentHeight = $(window).height() - navbarHeight;
+	var contentHeight = window.innerHeight;
+	//alert(window.innerHeight)
 	//var contentHeight = screen.height - navbarHeight;
 	$("#content").css("min-height",contentHeight);
 }
@@ -122,12 +146,12 @@ function initQuoteLoop(){
 		console.log("Found Blockquote with id:", index);
 		var blockquote = this;
 		changeQuote(this);
-		setInterval(function(){changeQuote(blockquote);},25000);
+		setInterval(function(){changeQuote(blockquote);},5000);
 	});
 }
 
 function changeQuote(blockquote) {
-	console.log("Changing blockquote...");
+	console.log("Changing blockquote...", blockquote);
 	apiCall("sitater",true,0,function(data){		
 		$(blockquote).fadeOut('slow', function(){
 			$(blockquote).html("<p>"+data.sitat+"</p><footer>"+data.forfatter+"</footer>");	

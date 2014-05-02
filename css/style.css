@@ -1,4 +1,8 @@
 /* DESIGN */
+html {
+	-webkit-font-smoothing: antialiased;	
+}
+
 
 body { 
 	/*padding-top: 50px; */
@@ -25,7 +29,7 @@ body {
 }
 
 .pace-inactive {
-  display: none;
+ 	display: none;
 }
 
 .navbar {
@@ -33,7 +37,13 @@ body {
 	-webkit-box-shadow: 0px 12px 19px -2px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 12px 19px -2px rgba(0,0,0,0.25);
 	box-shadow: 0px 12px 19px -2px rgba(0,0,0,0.25);
+	opacity:0.9;
 }
+
+.nav-content{
+	/*padding-top: 7px;*/
+}
+
 
 #content {
 	margin-top: 50px;
@@ -73,10 +83,27 @@ body {
 
 /* MAIN */
 .main-bg {
-	background-image: url('../img/bg2.jpg');
+	background-image: url('../img/bg5.jpg');
 	background-repeat: no-repeat;
 	background-color: fff;
+	background-position:center;
+	background-size: cover;
 }
+
+.push {
+	margin-top: 100px;
+}
+
+.title {
+	color: #0A5B81;
+	text-transform: uppercase;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;	
+	font-weight: 300;
+	font-size: 1em;
+}
+
+
+
 
 /* SERVICES */
 .field1{
@@ -114,6 +141,7 @@ body {
 }
 .service-sm-image {
 	background-image: url('../img/services3.jpg');
+	background-position: center;
 	height: 439px;
 }
 
@@ -143,6 +171,11 @@ body {
 	padding-right: 15px;
 }
 
+#brokerbg1 {
+	background-image: url('../img/brokerbg1.jpg');
+	background-position: center;
+	height: 400px;
+}
 
 h3 {
 	margin-bottom: 0;
@@ -153,13 +186,39 @@ h4 {
 	clear:left;
 }
 
-.title{
+.big {
+	
+}
+.subtitle {
 	color: #0A5B81;
 	text-transform: uppercase;
-	padding-top: 0px;
+	letter-spacing: 1px;
+	font-size: 1.5em;
+	font-weight: 300;
 }
 
+.subtitle-xs {
+	color: #0A5B81;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 1em;
+	font-weight: 300;
+}
+
+
 /* TYPOGRAFI */
+
+h1 {
+	font-size: 3.5em;
+	text-transform: uppercase;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-size: 2.5em;
+	text-transform: uppercase;
+	margin-bottom: 0px;
+}
 
 .blue {color: #0A5B81;}
 .red {color: #FF664A;}
