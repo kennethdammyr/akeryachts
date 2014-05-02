@@ -85,6 +85,8 @@ function createMain(){
 	//alert(window.innerHeight)
 	//var contentHeight = screen.height - navbarHeight;
 	$("#content").css("min-height",contentHeight);
+	
+
 }
 
 function giveError(error, xhr){
