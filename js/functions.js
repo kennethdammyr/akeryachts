@@ -1,6 +1,6 @@
 function loadPage(page){
 	console.log("Loading page: ", page);
-	$("#content").load(page + ".html", function(response, status, xhr){
+	$("#content").load("inc/" + page + ".html", function(response, status, xhr){
 	if (page != "main"){$("#content").removeClass("main-bg");}
 		if (status == "error"){
 			giveError(status, xhr);
@@ -65,7 +65,7 @@ function createMain(){
 
 function giveError(error, xhr){
 	$("#content").html("<div class='row firstrow bg-danger text-center'><div class='col-xs-10 col-xs-offset-1' id='error'><h3>Vi er veldig lei oss, men her gikk det galt. </h3></div></div><div id='push'></div>");
-	console.warn(xhr);
+	console.warn("XHR: ",xhr);
 	
 	$.ajax({
 		type: "POST",
@@ -111,7 +111,7 @@ function apiCall(src, random, limit, done){
 			done(data);
 		}
 	}).fail(function(jqxhr, textStatus, error){
-		giveError(jqxhr, textStatus, error);
+		giveError(error, jqxhr);
 	});
 }
 

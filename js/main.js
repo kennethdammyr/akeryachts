@@ -5,7 +5,7 @@ $(document).ready(function () {
 	// INITIAL LOAD
 	loadPage("main");
 	
-	$("#footer").load("footer.html", function(){
+	$("#footer").load("inc/footer.html", function(){
 		console.log("henta footer");	
 	});
 	
