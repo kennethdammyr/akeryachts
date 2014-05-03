@@ -1,3 +1,9 @@
+/* UTILS */
+.default-bg {
+	background-color: #f4f3f1;
+}
+
+
 /* DESIGN */
 html {
 	-webkit-font-smoothing: antialiased;	
@@ -91,20 +97,6 @@ button {
 	
 }
 
-/* remove spacing between middle columns */
-.row.no-gutter [class*='col-']:not(:first-child):not(:last-child) {
-  padding-right:0;
-  padding-left:0;
-}
-/* remove right padding from first column */
-.row.no-gutter [class*='col-']:first-child {
-  padding-right:0;
-}
-/* remove left padding from first column */
-.row.no-gutter [class*='col-']:last-child {
-  padding-left:0;
-}
-
 /* MAIN */
 .main-bg {
 	background-image: url('../img/bg5.jpg');
@@ -130,14 +122,18 @@ button {
 
 
 /* SERVICES */
-.field1{
-	padding-left: 0px;
-	padding-right: 0px;
+
+.highlight-list {
+	padding-top: 70px;
 }
 
-.icon {
+.highlight-list .icon {
 	float: left;
-	margin-right: 2em;
+}
+
+.highlight-list h5,
+.highlight-list p {
+	margin-left: 140px;
 }
 
 .service {
@@ -157,21 +153,16 @@ button {
 }
 
 #servicebg1 {
-	background-image: url('../img/services1.jpg');
+	background-position: top right;
 }
 
 #servicebg2 {
-	background-image: url('../img/services2.jpg');
+	background-position: top left;
 }
 .service-sm-image {
 	background-image: url('../img/services3.jpg');
 	background-position: center;
 	height: 439px;
-}
-
-.field2 {
-	padding-left: 0px;
-	padding-right: 0px;
 }
 
 /* BROKERS */

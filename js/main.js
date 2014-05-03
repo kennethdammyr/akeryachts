@@ -1,16 +1,17 @@
 $(document).ready(function () {
-    "use strict";
-	
+
 	// INITIAL LOAD
-	loadPage("main");
+	var page = getPageHash();
+	loadPage(page || "main");
 	
-	$("#footer").load("inc/footer.html", function(){
+	$("#footer").load("inc/footer.html", function (){
 		console.log("henta footer");	
 	});
 	
 	// EVENT-BINDINGS
-	$(".navbar-nav > li, .navbar-brand").click(function(){
-		var page = $(this).prop('id');
+	$(".navbar-nav > li a, .navbar-brand").click(function (){
+		var href = $(this).attr("href");
+		var page = getPageHash(href);
 		loadPage(page);
 	});
 	

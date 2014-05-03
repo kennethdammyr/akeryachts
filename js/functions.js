@@ -1,55 +1,58 @@
+var pages = {
+	"tjenester": createServices,
+	"meglere": createBrokers,
+	"bater": createBoats
+};
+
+function getPageHash(hash) {
+	hash = hash || location.hash;
+	var index = hash.indexOf("#");
+	
+	if(index > -1) {
+		return hash.substr(index+1);
+	}	
+}
+
 function loadPage(page){
 	console.log("Loading page: ", page);
+	//loadSpinner();
 	$("#content").load("inc/" + page + ".html", function(response, status, xhr){
 	if (page != "main"){$("#content").removeClass("main-bg");}
 		if (status == "error"){
 			giveError(status, xhr);
 		}
 
-		switch(page){
-		case "services":
-			createServices();
-			break;
-		case "brokers":
-			createBrokers();
-			break;
-		case "boats":
-			createBoats();
-			break;
-		default:
-			createMain();
-		}
-
+		// run init script for given page
+		(pages[page] || createMain)();
+		
 		// See if there should be any quotes
 		initQuoteLoop();
+		//removeSpinner();
 	});
 }
 
-function createServices(){
+function createServices($page){
+	$page = $page || $(document);
 	var source   = $("#list-template").html();
 	var template = Handlebars.compile(source);
 
 	apiCall("tjenester", false, 0,function(data){
 		console.log(data);
-		var i = 0;
-		$(data).each(function(tjeneste){
-			if(i<4){ // We segregate by 4
-				$("#list-group1").append(template(data[tjeneste]));			
-			} else if(i<8){
-				$("#list-group2").append(template(data[tjeneste]));			
+		var group1 = $page.find("#list-group1");
+		var group2 = $page.find("#list-group2");
+		var group3 = $page.find("#list-group3");
+			
+		$(data).each(function(index, tjeneste){
+			var html = template(tjeneste);
+			if(index<4){ // We segregate by 4
+				group1.append(html);			
+			} else if(index<8){
+				group2.append(html);			
 			} else {
-				$("#list-group3").append(template(data[tjeneste]));			
+				group3.append(html);			
 			}
-			i = i+1;
 		});
-		// Set height of images to match content
-		var sheight1 = $("#list-group1").parent().height();
-		//console.log("Høyde: ",sheight);
-		$("#servicebg1").height(sheight1+70);
-		
-		var sheight2 = $("#list-group2").parent().height();
-		//console.log("Høyde: ",sheight);
-		$("#servicebg2").height(sheight2+70);
+
 	});	
 }
 
@@ -86,6 +89,9 @@ function createMain(){
 	//var contentHeight = screen.height - navbarHeight;
 	$("#content").css("min-height",contentHeight);
 	
+}
+
+function createBoats() {
 
 }
 
@@ -129,7 +135,7 @@ function apiCall(src, random, limit, done){
 	// Må kunne plukke spesifikk data til sider osv.
 	// done("Aker yachts er det beste firmaet jeg har brukt noen gang!");
 
-	var jqxhr = $.getJSON( "http://192.168.0.6:8888/akeryachts/pw/"+src, function( data, textStatus, jqXHR ) {
+	var jqxhr = $.getJSON( "/akeryachts/pw/"+src, function( data, textStatus, jqXHR ) {
 		if(random){
 			var int = pickRandomProperty(data);
 			done(data[int]);
@@ -141,6 +147,7 @@ function apiCall(src, random, limit, done){
 	});
 }
 
+
 function initQuoteLoop(){
 	console.log("Starting Quote-loop on all blockquote-tags");	
 
@@ -148,7 +155,7 @@ function initQuoteLoop(){
 		console.log("Found Blockquote with id:", index);
 		var blockquote = this;
 		changeQuote(this);
-		setInterval(function(){changeQuote(blockquote);},5000);
+		setInterval(function(){changeQuote(blockquote);},25000);
 	});
 }
 
