@@ -92,7 +92,25 @@ function createMain(){
 }
 
 function createBoats() {
-
+	var row = 0;
+	while (row < 10){
+		row = row +1;
+		console.log("Ja...");
+		getOneFinn(row, function(data){
+			$("#bater").append("<p>"+data[0].title+"</p>");
+			console.log("callback", data);		
+		});		
+	}
+	
+		$(window).scroll(function () {
+        if ($("#content").height() <= $(window).scrollTop() + $(window).height()) {
+			row++;
+           	getOneFinn(row, function(data){
+			$("#bater").append("<p>"+data[0].title+"</p>");
+			console.log("callback", data);		
+			});	
+        }
+    });
 }
 
 function giveError(error, xhr){
@@ -142,6 +160,18 @@ function apiCall(src, random, limit, done){
 		} else {
 			done(data);
 		}
+	}).fail(function(jqxhr, textStatus, error){
+		giveError(error, jqxhr);
+	});
+}
+
+function getOneFinn(page, done){
+	var data = {
+		'page': page, 
+		'rows': 1
+	}
+	$.getJSON( "finn.php", data, function( data, textStatus, jqXHR ) {
+		done(data);
 	}).fail(function(jqxhr, textStatus, error){
 		giveError(error, jqxhr);
 	});
