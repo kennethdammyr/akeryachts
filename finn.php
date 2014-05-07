@@ -10,7 +10,6 @@
  ********************************************************************/
 header('Content-Type: text/html; charset=utf-8');
 
-
 //parse client.ini
 $clientIniArray = parse_ini_file("config/client.ini");
 $apiKey = $clientIniArray['apiKey'];

@@ -13,9 +13,21 @@ function getPageHash(hash) {
 	}	
 }
 
+function loadSpinner(done){
+	console.log("Spinner!!!!!");
+	$("#content").fadeTo(100,0,function(){
+		done();	
+	});
+}
+
+function removeSpinner(){
+	console.log("No spinner!!!!!");
+	$("#content").fadeTo(500,1);
+}
+
 function loadPage(page){
 	console.log("Loading page: ", page);
-	//loadSpinner();
+	
 	$("#content").load("inc/" + page + ".html", function(response, status, xhr){
 	if (page != "main"){$("#content").removeClass("main-bg");}
 		if (status == "error"){
@@ -27,7 +39,7 @@ function loadPage(page){
 		
 		// See if there should be any quotes
 		initQuoteLoop();
-		//removeSpinner();
+		//
 	});
 }
 
@@ -41,18 +53,22 @@ function createServices($page){
 		var group1 = $page.find("#list-group1");
 		var group2 = $page.find("#list-group2");
 		var group3 = $page.find("#list-group3");
-			
+		//var output;		
 		$(data).each(function(index, tjeneste){
-			var html = template(tjeneste);
-			if(index<4){ // We segregate by 4
-				group1.append(html);			
-			} else if(index<8){
-				group2.append(html);			
-			} else {
-				group3.append(html);			
-			}
-		});
+			var item  = template(tjeneste);
 
+			
+			if(index<4){ // We segregate by 4
+				group1.append(item);			
+			} else if(index<8){
+				group2.append(item);			
+			} else {
+				group3.append(item);			
+			}
+			
+			//output += item;
+		});
+		removeSpinner();
 	});	
 }
 
@@ -76,6 +92,7 @@ function createBrokers(){
 			}
 		 i = i+1;
 		});
+		removeSpinner();
 	});
 }
 
@@ -88,7 +105,7 @@ function createMain(){
 	//alert(window.innerHeight)
 	//var contentHeight = screen.height - navbarHeight;
 	$("#content").css("min-height",contentHeight);
-	
+	removeSpinner();
 }
 
 function createBoats() {
@@ -111,6 +128,7 @@ function createBoats() {
 			});	
         }
     });
+	removeSpinner();
 }
 
 function giveError(error, xhr){

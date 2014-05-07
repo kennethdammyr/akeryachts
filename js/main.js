@@ -10,9 +10,11 @@ $(document).ready(function () {
 	
 	// EVENT-BINDINGS
 	$(".navbar-nav > li a, .navbar-brand").click(function (){
-		var href = $(this).attr("href");
-		var page = getPageHash(href);
-		loadPage(page);
+		loadSpinner(function(){
+			var href = $(this).attr("href");
+			var page = getPageHash(href);
+			loadPage(page);	
+		});
 	});
 	
 
