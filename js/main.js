@@ -4,8 +4,11 @@ $(document).ready(function () {
 	var page = getPageHash();
 	loadPage(page || "main");
 	
+	
+	
 	$("#footer").load("inc/footer.html", function (){
 		console.log("henta footer");	
+		initMap();
 	});
 	
 	// EVENT-BINDINGS
@@ -16,9 +19,5 @@ $(document).ready(function () {
 			loadPage(page);	
 		});
 	});
-	
-
-	
-	
 
 });

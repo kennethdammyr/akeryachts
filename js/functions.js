@@ -14,15 +14,48 @@ function getPageHash(hash) {
 }
 
 function loadSpinner(done){
-	console.log("Spinner!!!!!");
 	$("#content").fadeTo(100,0,function(){
 		done();	
 	});
+	$("#footer").fadeTo(100,0);
 }
 
 function removeSpinner(){
-	console.log("No spinner!!!!!");
 	$("#content").fadeTo(500,1);
+	$("#footer").fadeTo(500,1);
+	//window.scrollTo(0, 0);
+}
+
+function initMap(){
+	var styleArray = [
+						  {
+							"stylers": [
+							  { "saturation": -100 },
+							  { "gamma": 0.31 }
+							]
+						  }
+						]
+		  	
+	var sandviksveien = new google.maps.LatLng(59.89181,10.54717);  
+	var mapOptions = {
+		center: sandviksveien,
+		zoom: 14,
+		styles: styleArray,
+		disableDefaultUI: true,
+		scrollwheel: false
+	};  
+
+	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+	var marker = new google.maps.Marker({
+		position: sandviksveien,
+		map: map,
+		title: 'Aker Yachts AS'
+	});
+	
+	$('#map-canvas').on('shown', function () {
+    	google.maps.event.trigger(map, "resize");
+	});
 }
 
 function loadPage(page){
@@ -38,7 +71,7 @@ function loadPage(page){
 		(pages[page] || createMain)();
 		
 		// See if there should be any quotes
-		initQuoteLoop();
+		//initQuoteLoop();
 		//
 	});
 }
@@ -57,8 +90,7 @@ function createServices($page){
 		$(data).each(function(index, tjeneste){
 			var item  = template(tjeneste);
 
-			
-			if(index<4){ // We segregate by 4
+			if(index<5){ // We segregate by 4
 				group1.append(item);			
 			} else if(index<8){
 				group2.append(item);			
@@ -109,17 +141,18 @@ function createMain(){
 }
 
 function createBoats() {
+	/*
 	var row = 0;
 	while (row < 10){
 		row = row +1;
 		console.log("Ja...");
 		getOneFinn(row, function(data){
-			$("#bater").append("<p>"+data[0].title+"</p>");
+			//$("#bater").append("<p>"+data[0].title+"</p>");
 			console.log("callback", data);		
 		});		
 	}
 	
-		$(window).scroll(function () {
+	$(window).scroll(function () {
         if ($("#content").height() <= $(window).scrollTop() + $(window).height()) {
 			row++;
            	getOneFinn(row, function(data){
@@ -128,6 +161,7 @@ function createBoats() {
 			});	
         }
     });
+	*/
 	removeSpinner();
 }
 

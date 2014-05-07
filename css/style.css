@@ -3,6 +3,9 @@
 	background-color: #f4f3f1;
 }
 
+.white-bg {
+	background-color: #fff;
+}
 
 /* DESIGN */
 html {
@@ -21,7 +24,7 @@ body {
 	color: #3B3C3C;
 	font-size: 16px;
 	font-weight: 300;
-	line-height: 30px;
+	line-height: 24px;
 	/*height: 100%;*/
 }
 
@@ -73,7 +76,7 @@ body {
 	width: 100%;
 	background-color: #3B3C3C;
 	color: #E6E4E1;
-	height: 400px;
+	height: 100%;
 	margin-bottom: 0;
 }
 
@@ -118,7 +121,15 @@ button {
 }
 
 
+/* FOOTER */
+#contactinfo {
+	min-height: 250px;
+}
 
+#map-canvas {
+	height: 400px;
+	bottom: 0px;
+}
 
 /* SERVICES */
 
@@ -135,6 +146,20 @@ button {
 	margin-left: 140px;
 }
 
+.highlight-list-xs {
+	padding-top: 50px;
+}
+
+.highlight-list-xs .icon{
+	float: left;
+	width: 50px;
+}
+
+.highlight-list-xs h5,
+.highlight-list-xs p {
+	
+}
+
 .service {
 	float: left;
 	clear: none;
@@ -143,6 +168,7 @@ button {
 .marginDown {
 	margin-bottom: 20px;
 }
+
 
 .service-illustration {
 	width: 100%;
@@ -163,6 +189,12 @@ button {
 	background-position: center;
 	height: 439px;
 }
+
+.grid-container {position: relative; width: 100%px; overflow: auto;}
+.grid {}
+.grid ul {height: 150px; list-style-type: none; white-space: nowrap; padding: 0; margin: 0;}
+.grid ul li {display: inline; padding: 0; margin: 0;}
+.grid ul li img {height: 150px;}
 
 /* BROKERS */
 .megler {
@@ -219,6 +251,13 @@ h4 {
 	font-weight: 300;
 }
 
+/* BOATS */
+.boat {
+	background-color: #fff;
+	padding-left: 0;
+	padding-right: 0;
+	margin-bottom: 3em;
+}
 
 /* TYPOGRAFI */
 
