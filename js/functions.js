@@ -23,18 +23,69 @@ function loadSpinner(done){
 function removeSpinner(){
 	$("#content").fadeTo(500,1);
 	$("#footer").fadeTo(500,1);
-	//window.scrollTo(0, 0);
+	window.scrollTo(0, 0);
+}
+
+function isElementInViewport (el) {
+
+    //special bonus for those using jQuery
+    if (el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
+}
+
+function makeBoat(data, source, template){
+	Handlebars.registerHelper('short_title', function() {
+		
+		//var title = data[0].title.replace(/vårkupp|selges|skal|:|gi|bud/gi, "");
+		
+		return new Handlebars.SafeString(data[0].title)
+	});
+
+	Handlebars.registerHelper('short_desc', function() {
+		return new Handlebars.SafeString(
+			data[0].description.substring(0,350).replace(/[<]br[^>]*[>]/gi,"") + "..."
+
+		);
+	});
+
+
+	Handlebars.registerHelper('formatted_price', function() {
+		var price = accounting.formatMoney(data[0].price, "kr", 0, " ", ",","%v %s");
+
+		return new Handlebars.SafeString(price);
+	});
+	$("#bater").append(template(data[0]));
 }
 
 function initMap(){
 	var styleArray = [
-						  {
-							"stylers": [
-							  { "saturation": -100 },
-							  { "gamma": 0.31 }
-							]
-						  }
+					  {
+						"stylers": [
+						  { "saturation": -100 }
 						]
+					  },{
+						"elementType": "labels.text",
+						"stylers": [
+						  { "color": "#FF664A" },
+							{ "weight": 0.1 },
+						]
+					  },{
+    "featureType": "water",
+    "stylers": [
+      { "color": "#0A5B81" }
+    ]
+  }
+					]
 		  	
 	var sandviksveien = new google.maps.LatLng(59.89181,10.54717);  
 	var mapOptions = {
@@ -71,7 +122,7 @@ function loadPage(page){
 		(pages[page] || createMain)();
 		
 		// See if there should be any quotes
-		//initQuoteLoop();
+		initQuoteLoop();
 		//
 	});
 }
@@ -112,7 +163,7 @@ function createBrokers(){
 		
 		var middle = Math.round(data.length / 2);
 		var i = 0;
-		console.log("MIdten: ",middle);
+		console.log("Midten: ",middle);
 		
 		$(data).each(function(megler){
 			if (i == middle){
@@ -141,27 +192,45 @@ function createMain(){
 }
 
 function createBoats() {
-	/*
-	var row = 0;
-	while (row < 10){
-		row = row +1;
-		console.log("Ja...");
-		getOneFinn(row, function(data){
-			//$("#bater").append("<p>"+data[0].title+"</p>");
-			console.log("callback", data);		
-		});		
-	}
+	var source   = $("#boat-template").html();
+	var template = Handlebars.compile(source);
 	
+	var row = 0;
+	var killLoad = false;
+	if(killLoad == false){
+		while (row < 9){
+			killLoad = false;
+			row = row +1;
+
+			getOneFinn(row, function(data){
+				makeBoat(data, source, template);
+				//$("#bater").append("<p>"+data[0].title+"</p>");
+				console.log("callback", data);		
+				killLoad = true;
+			});
+		}
+	}
+	var killScroll = false;
+
+		
+	
+	// Vi laster med hvis det scrolles
 	$(window).scroll(function () {
-        if ($("#content").height() <= $(window).scrollTop() + $(window).height()) {
-			row++;
-           	getOneFinn(row, function(data){
-			$("#bater").append("<p>"+data[0].title+"</p>");
-			console.log("callback", data);		
-			});	
+        if ($("#content").height() <= $(window).scrollTop() + $(window).height()) {			
+			
+			if (killScroll == false){
+				killScroll = true;
+				row++;
+				getOneFinn(row, function(data){
+					makeBoat(data, source, template);
+					console.log("callback", data);
+					killScroll = false;
+				});
+				
+			}
         }
     });
-	*/
+	
 	removeSpinner();
 }
 
@@ -205,7 +274,7 @@ function apiCall(src, random, limit, done){
 	// Må kunne plukke spesifikk data til sider osv.
 	// done("Aker yachts er det beste firmaet jeg har brukt noen gang!");
 
-	var jqxhr = $.getJSON( "/akeryachts/pw/"+src, function( data, textStatus, jqXHR ) {
+	var jqxhr = $.getJSON( "pw/"+src, function( data, textStatus, jqXHR ) {
 		if(random){
 			var int = pickRandomProperty(data);
 			done(data[int]);

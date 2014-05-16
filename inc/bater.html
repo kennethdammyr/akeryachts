@@ -1,10 +1,108 @@
 <div class="firstrow" id="bater">
 	
-	<section class="row">
-		<div class="col-xs-10 col-xs-offset-1 boat">
-			<h3>Sun Odyssey 49</h3>
-		</div>
-	</section>
-		
-	
+	<script id="boat-template" type="text/x-handlebars-template">			
+		<section class="row visible-lg">
+			<div class="col-xs-10 col-xs-offset-1 boat">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="padding">
+							<h3>{{short_title}}</h3>
+							<p>{{short_desc}}</p>
+
+							<div class="row">
+								<div class="col-xs-6">
+									<dl class="dl-horizontal">
+										<dt>Type</dt>
+										<dd>{{make}}</dd>
+										<dt>Årsmodell</dt>
+										<dd>{{#if year }}{{year}}{{else}}N/A{{/if}}</dd>
+										<dt>Lengde</dt>
+										<dd>{{#if length_feet}}{{length_feet}} fot{{else}}N/A{{/if}}</dd>
+										<dt>Bredde</dt>
+										<dd>{{#if width}}{{width}} cm{{else}}N/A{{/if}}</dd>
+									</dl>
+								</div>
+								<div class="col-xs-6">
+									<dl class="dl-horizontal">
+										<dt>Dybde</dt>
+										<dd>{{#if depth}}{{depth}} cm{{else}}N/A{{/if}}</dd>
+										<dt>Sengeplasser</dt>
+										<dd>{{#if no_of_sleepers}}{{no_of_sleepers}}{{else}}N/A{{/if}}</dd>
+										<dt>Vekt</dt>
+										<dd>{{#if weight}}{{weight}} kg{{else}}N/A{{/if}}</dd>
+										<dt>Pris</dt>
+										<dd>{{formatted_price}}</dd>
+									</dl>
+								</div>
+							</div>
+							<div class="row">
+								<p style="text-align: right;"><a href="{{altURL}}" target="_blank">Se mer...</a></p>
+							</div>
+						</div>	
+					</div>
+					<div class="col-lg-6">
+						<img src="{{images.[1]}}" alt="" class="mainimage-lg" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="row visible-md">
+			<div class="col-xs-10 col-xs-offset-1 boat">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="padding">
+							<h3>{{short_title}}</h3>
+							<p class="md">{{short_desc}}<br /><a href="{{altURL}}">Se mer...</a></p>
+							<p class="md"></p>
+							<div class="row">
+								<div class="col-xs-12">
+									<dl class="dl-horizontal">
+										<dt>Type</dt>
+										<dd>{{make}}</dd>
+										<dt>Årsmodell</dt>
+										<dd>{{#if year }}{{year}}{{else}}N/A{{/if}}</dd>
+										<dt>Lengde</dt>
+										<dd>{{#if length_feet}}{{length_feet}} fot{{else}}N/A{{/if}}</dd>
+
+										<dt>Sengeplasser</dt>
+										<dd>{{#if no_of_sleepers}}{{no_of_sleepers}}{{else}}N/A{{/if}}</dd>
+
+										<dt>Pris</dt>
+										<dd>{{formatted_price}}</dd>
+									</dl>
+
+								</div>
+							</div>
+
+						</div>	
+					</div>
+					<div class="col-md-6">
+						<img src="{{images.[1]}}" alt="" class="mainimage-md" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="row visible-sm">
+			<div class="col-xs-10 col-xs-offset-1 boat">
+				<img src="{{images.[1]}}" style="width: 200px; float: right" />
+				<div class="padding">
+					<h3>{{short_title}}</h3>
+					<p class="sm">{{short_desc}}</p>
+					<span class="readmore"><a href="{{altURL}}" target="_blank">Se mer...</a></span>
+				</div>
+			</div>
+		</section>
+
+		<section class="row visible-xs">
+			<div class="col-xs-12 boat">
+				<img src="{{images.[1]}}" style="width: 120px; float: right" />
+				<div class="padding">
+					<h3>{{short_title}}</h3>
+					<p class="xs"><span class="blue">Pris </span>{{formatted_price}}<span class="readmore"><a href="{{altURL}}" target="_blank">Se mer...</a></span></p>
+				</div>
+			</div>
+		</section>
+	</script>
 </div>

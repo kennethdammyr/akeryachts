@@ -142,7 +142,11 @@ button {
 }
 
 .highlight-list h5,
-.highlight-list p {
+.highlight-list p{
+	margin-left: 140px;
+}
+
+.highlight-list ul {
 	margin-left: 140px;
 }
 
@@ -257,6 +261,66 @@ h4 {
 	padding-left: 0;
 	padding-right: 0;
 	margin-bottom: 3em;
+}
+
+.boat .mainimage-lg {
+	float: right;
+	width: 500px;
+	padding: 0px;
+}
+
+.boat .mainimage-md {
+	float: right;
+	width: 450px;
+	padding: 0px;
+}
+
+.boat dl {
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.boat .md {
+	font-size: 14px;
+	margin-right:10px;
+}
+
+.boat .sm {
+	margin-right: 210px;
+	font-size: 14px;
+}
+
+.boat .xs {
+	margin-right: 130px;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+.boat br{
+	display: none;	
+}
+
+.readmore {
+	float: right;
+	margin-right: 10px;	
+	font-size: 14px;
+}
+
+.dl-horizontal dt {
+    
+    padding-right: 1em;
+}
+
+.dl-horizontal dd{
+    margin-left: 0;
+}
+
+
+.boat dt {
+	color: #0A5B81;
+}
+
+.boat .padding {
+	padding-left: 15px;
 }
 
 /* TYPOGRAFI */
