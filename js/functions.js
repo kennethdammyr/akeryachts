@@ -137,12 +137,20 @@ function createServices($page){
 	var template = Handlebars.compile(source);
 
 	apiCall("tjenester", false, 0,function(data){
+		// Vi sorterer etter vekting 
+		data.sort(function(a,b){
+			return b.vekting - a. vekting; 
+		});
+		
 		console.log(data);
+		var arr = new Array();
+		//console.log(arr)
 		var group1 = $page.find("#list-group1");
 		var group2 = $page.find("#list-group2");
 		var group3 = $page.find("#list-group3");
 		//var output;		
 		$(data).each(function(index, tjeneste){
+			arr.push(tjeneste);	
 			var item  = template(tjeneste);
 
 			if(index<5){ // We segregate by 4
@@ -155,6 +163,7 @@ function createServices($page){
 			
 			//output += item;
 		});
+		
 		removeSpinner();
 	});	
 }
@@ -164,7 +173,10 @@ function createBrokers(){
 	var template = Handlebars.compile(source);
 	
 	apiCall("meglere", false, 0, function(data){
-		
+		// Vi sorterer etter vekting 
+		data.sort(function(a,b){
+			return b.vekting - a. vekting; 
+		});
 		var middle = Math.round(data.length / 2);
 		var i = 0;
 		console.log("Midten: ",middle);
