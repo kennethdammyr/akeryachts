@@ -4,9 +4,9 @@
 			<div class="col-xs-10 col-xs-offset-1 megler">
 				<img src="{{profilbilde}}" alt="Bilde av megler"/>
 					<h3 class="">{{navn}}
-						<small class="pull-right hidden-xs">
-							<a href="mailto:{{email}}"><span class="glyphicon glyphicon-envelope meglericons push-right"></span></a>
-							<a href="tel:{{tlf}}"><span class="glyphicon glyphicon-earphone meglericons push-right"></span></a>
+						<small class="pull-right hidden-xs pushRight">
+							<a href="mailto:{{email}}"><span class="glyphicon glyphicon-envelope meglericons push-right"></span><span class="contact">{{email}}</span></a><br />
+							<a href="tel:{{tlf}}"><span class="glyphicon glyphicon-earphone meglericons push-right"></span><span class="contact">{{tlf}}</span></a>
 						</small>
 					</h3>
 					<p class="title">{{stilling}}</p>
@@ -29,8 +29,8 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12" style="text-align: center;">
-						<a href="mailto:{{email}}"><span class="glyphicon glyphicon-envelope meglericons push-right"></span></a>
-						<a href="tel:{{tlf}}"><span class="glyphicon glyphicon-earphone meglericons"></span></a>
+						<a href="mailto:{{email}}"><span class="glyphicon glyphicon-envelope meglericons push-right"></span><span class="contact">{{email}}</span></a><br />
+						<a href="tel:{{tlf}}"><span class="glyphicon glyphicon-earphone meglericons"></span><span class="contact"> {{tlf}}</span></a>
 					</div>
 				</div>
 			</div>

@@ -239,9 +239,12 @@ h4 {
 	clear:left;
 }
 
-.big {
-	
+.contact {
+	font-size: 0.8em;
+	line-height: 2em;
 }
+
+
 .subtitle {
 	
 	text-transform: uppercase;
@@ -376,4 +379,8 @@ h1, h2, h3, h4, h5  {font-family: Cinzel, "Perpetua Titling MT", Georgia, "Times
 
 .push50 {	
 	margin-top: 50px;
+}
+
+.pushRight {
+	margin-right: 15px;	
 }
