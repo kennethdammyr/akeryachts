@@ -112,6 +112,10 @@ function initMap(){
 function loadPage(page){
 	console.log("Loading page: ", page);
 	
+	if(page == "kontakt"){
+		page = "main";	
+	}
+	
 	$("#content").load("inc/" + page + ".html", function(response, status, xhr){
 	if (page != "main"){$("#content").removeClass("main-bg");}
 		if (status == "error"){
@@ -120,7 +124,7 @@ function loadPage(page){
 
 		// run init script for given page
 		(pages[page] || createMain)();
-		
+
 		// See if there should be any quotes
 		initQuoteLoop();
 		//
