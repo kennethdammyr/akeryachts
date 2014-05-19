@@ -90,7 +90,7 @@ body {
 
 .form-control {
 	background-color: #000;
-	color: #FF664A;
+	color: #FF4216;
 	border: 0px;;
 	border-bottom: 1px solid #fff;
 }
@@ -108,10 +108,13 @@ button {
 	background-size: cover;
 }
 
-.push {
-	margin-top: 100px;
+#verdivurdering .glyphicon {
+	color: #FF4216;
 }
 
+.glyphicon-remove {
+	cursor: pointer;
+}
 .title {
 	color: #0A5B81;
 	text-transform: uppercase;
@@ -240,17 +243,17 @@ h4 {
 	
 }
 .subtitle {
-	color: #0A5B81;
+	
 	text-transform: uppercase;
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 	font-size: 1.5em;
 	font-weight: 300;
 }
 
 .subtitle-xs {
-	color: #0A5B81;
+	
 	text-transform: uppercase;
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 	font-size: 1em;
 	font-weight: 300;
 }
@@ -337,8 +340,10 @@ h2 {
 	margin-bottom: 0px;
 }
 
+
+
 .blue {color: #0A5B81;}
-.red {color: #FF664A;}
+.red {color: #FF4216;}FF4216
 .white {color: #fff;}
 .nav {text-transform: uppercase;}
 
@@ -362,3 +367,13 @@ footer {
 }
 
 h1, h2, h3, h4, h5  {font-family: Cinzel, "Perpetua Titling MT", Georgia, "Times New Roman", Times, serif}
+
+/* UTILITIES */
+
+.push100 {
+	margin-top: 100px;
+}
+
+.push50 {	
+	margin-top: 50px;
+}

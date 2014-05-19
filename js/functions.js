@@ -76,7 +76,7 @@ function initMap(){
 					  },{
 						"elementType": "labels.text",
 						"stylers": [
-						  { "color": "#FF664A" },
+						  { "color": "#FF4216" },
 							{ "weight": 0.1 },
 						]
 					  },{
@@ -186,9 +186,14 @@ function createMain(){
 	var navbarHeight = $("#ay-navbar").height();
 	var contentHeight = window.innerHeight;
 	//alert(window.innerHeight)
-	//var contentHeight = screen.height - navbarHeight;
+	var contentHeight = screen.height - navbarHeight;
 	$("#content").css("min-height",contentHeight);
 	removeSpinner();
+	
+	$(".glyphicon-remove").on('click', function($el){
+		$(this).parent().fadeOut(300);
+		//console.log($(this).parent());
+	});
 }
 
 function createBoats() {
@@ -214,7 +219,7 @@ function createBoats() {
 
 		
 	
-	// Vi laster med hvis det scrolles
+	// Vi laster mer hvis det scrolles
 	$(window).scroll(function () {
         if ($("#content").height() <= $(window).scrollTop() + $(window).height()) {			
 			
