@@ -16,6 +16,18 @@ $(document).ready(function () {
 		initMap();
 	});
 	
+	// Vi ønsker at menyelementer skal lukke seg i mobilvisning
+		$('.menubutton').on('click', function(e){
+				$('.in').collapse('hide');
+		});
+		
+		// Vi ønsker å lukke menyen om man trykker på innholdet
+		$('#content').on('click', function(){
+			if($("#header").find(".navbar-collapse").hasClass("in")){
+				$('.navbar-collapse').collapse('hide');
+			}
+		});
+	
 	// EVENT-BINDINGS
 	$(".navbar-nav > li a, .navbar-brand").click(function (){
 		
