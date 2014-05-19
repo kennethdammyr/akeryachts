@@ -137,7 +137,7 @@ button {
 /* SERVICES */
 
 .highlight-list {
-	padding-top: 70px;
+	/*padding-top: 70px;*/
 }
 
 .highlight-list .icon {
@@ -172,11 +172,6 @@ button {
 	clear: none;
 }
 
-.marginDown {
-	margin-bottom: 20px;
-}
-
-
 .service-illustration {
 	width: 100%;
 	/*margin-left: 15px;*/
@@ -185,7 +180,8 @@ button {
 }
 
 #servicebg1 {
-	background-position: top right;
+	background-position: bottom right;
+	background-size: contain;
 }
 
 #servicebg2 {
@@ -383,4 +379,8 @@ h1, h2, h3, h4, h5  {font-family: Cinzel, "Perpetua Titling MT", Georgia, "Times
 
 .pushRight {
 	margin-right: 15px;	
+}
+
+.pushDown {
+	margin-bottom: 30px;
 }

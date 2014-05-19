@@ -153,8 +153,8 @@ function createServices($page){
 			arr.push(tjeneste);	
 			var item  = template(tjeneste);
 
-			if(index<5){ // We segregate by 4
-				group1.append(item);			
+			if(index<4){ // We segregate by 4
+				group1.append(item);
 			} else if(index<8){
 				group2.append(item);			
 			} else {
@@ -163,6 +163,10 @@ function createServices($page){
 			
 			//output += item;
 		});
+		group1.find(".highlight-list").first().addClass("firstrow");
+		group2.find(".highlight-list").first().addClass("firstrow");
+		console.log(group1.find(".highlight-list").first());
+		//$(".highlight-list").first().addClass("firstrow");
 		
 		removeSpinner();
 	});	
