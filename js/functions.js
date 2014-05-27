@@ -344,3 +344,45 @@ function changeQuote(blockquote) {
 		});		
 	});
 }
+
+function processVerdiVurdering(data, callback){
+	// Create interactive button
+	var l = Ladda.create(data);
+	l.start();
+	
+	
+	// Prepare data
+	var inputs	= $(data).parent().find("input");
+	var name	= inputs[0].value;
+	var email	= inputs[1].value;
+	var html	= "<h1>Ny verdivurdering</h1><p>Hei, følgende person har fyllt ut skjema på akeryachts.no:</p><p>Navn: "+name+"</p><p>E-post: "+email+"</p>";
+	
+	
+	// Send e-mail with data
+	$.ajax({
+		type: "POST",
+		url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+		data: {
+			'key': '-qbBXZsthNoZGX-MmRRSrA',
+			'message': {
+		  	'from_email': 'verdivurdering@akeryachts.no',
+		  	'to': [
+					{
+					'email': 'verdivurdering@akeryachts.no',
+					'type': 'to'
+					}
+				],
+		  	'autotext': 'true',
+		  	'subject': 'Ønske om verdivurdering fra AkerYachts.no',
+		  	'html': html,
+			}
+	 	}
+	 }).done(function(response) {
+	 	console.log(response); // if you're into that sorta thing
+		//$("#verdivurdering").html("<h3>Tusen takk, vi tar kontakt!</h3>");
+		$(data).replaceWith("<p class=\"red\">Tusen takk, vi tar kontakt!</p>");
+		callback();
+	 });
+	
+	
+}

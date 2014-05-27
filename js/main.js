@@ -41,9 +41,19 @@ $(document).ready(function () {
 				loadPage(page);	
 			});
 		}
-		
-		
-		
+			
+	});
+	
+	$("#content").on('click', 'button',function(e){
+		var button = this;
+		e.preventDefault();
+
+		processVerdiVurdering(button, function(){
+			//console.log("Got bakc! ", $(button));
+			
+			
+			setTimeout(function(){$("#verdivurdering").fadeOut(1000);},2000);	
+		});
 	});
 
 });
