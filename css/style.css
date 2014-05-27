@@ -63,7 +63,7 @@ body {
 
 #verdivurdering {
 	background-color: #000;
-	opacity: 0.85;
+	opacity: 0.85;mainimage-lg
 	padding: 15px;
 	color: #fff;
 	margin-right: -15px;
@@ -269,7 +269,7 @@ h4 {
 
 .boat .mainimage-lg {
 	float: right;
-	width: 500px;
+	max-width: 500px;
 	padding: 0px;
 }
 
