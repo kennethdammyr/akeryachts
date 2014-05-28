@@ -63,7 +63,7 @@ body {
 
 #verdivurdering {
 	background-color: #000;
-	opacity: 0.85;mainimage-lg
+	opacity: 0.85;
 	padding: 15px;
 	color: #fff;
 	margin-right: -15px;
@@ -111,6 +111,10 @@ body {
 
 #verdivurdering .glyphicon {
 	color: #FF4216;
+}
+
+#quisquiliae {
+	display: none;
 }
 
 .glyphicon-remove {
