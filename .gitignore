@@ -1,4 +1,5 @@
 config/
+config/client.ini
 pw/
 temp.html
 temp-logo.png
