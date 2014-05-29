@@ -1,3 +1,11 @@
+# FJERNE WWW
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^www.akeryachts.no
+RewriteRule (.*) http://akeryachts.no/$1 [R=permanent,L]
+
+# ADAPTIVE IMAGES
 <IfModule mod_rewrite.c>
   Options +FollowSymlinks
   RewriteEngine On
