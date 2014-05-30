@@ -9,5 +9,5 @@ RewriteRule ^([bfg]=.*)  index.php?$1 [L,NE]
 </IfModule>
 <IfModule mod_env.c>
 # In case AddOutputFilterByType has been added
-SetEnv no-gzip
+#SetEnv no-gzip
 </IfModule>
