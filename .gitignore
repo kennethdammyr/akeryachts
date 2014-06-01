@@ -11,3 +11,4 @@ minify_js.php
 minify_css.php
 pullweb.php
 .htaccess
+img/team/*
