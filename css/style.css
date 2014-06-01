@@ -133,6 +133,10 @@ body {
 	bottom: 0px;
 }
 
+.fb-like-box {
+	margin-left: -10px;
+}
+
 /* SERVICES */
 
 .highlight-list {
