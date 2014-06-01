@@ -7,3 +7,6 @@ test.html
 pw_sql1.sql
 ht-kopi
 minify/
+minify_js.php
+minify_css.php
+pullweb.php
