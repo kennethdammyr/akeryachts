@@ -205,14 +205,16 @@ function createMain(){
 	// Set height of content to be viewport
 	var navbarHeight = $("#ay-navbar").height();
 	var contentHeight = window.innerHeight;
+	
 	//alert(window.innerHeight)
-	var contentHeight = screen.height - navbarHeight;
+	contentHeight = contentHeight - navbarHeight;
+	console.log(contentHeight);
 	$("#content").css("min-height",contentHeight);
 	removeSpinner();
 	
+	// Remove verdivurdering on click
 	$(".glyphicon-remove").on('click', function($el){
 		$(this).parent().fadeOut(300);
-		//console.log($(this).parent());
 	});
 }
 
