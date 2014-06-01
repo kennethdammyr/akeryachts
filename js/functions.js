@@ -153,7 +153,7 @@ function createServices($page){
 			arr.push(tjeneste);	
 			var item  = template(tjeneste);
 
-			if(index<4){ // We segregate by 4
+			if(index<3){ // We segregate by 4
 				group1.append(item);
 			} else if(index<8){
 				group2.append(item);			
@@ -359,34 +359,37 @@ function processVerdiVurdering(data, callback){
 	var html	= "<h1>Ny verdivurdering</h1><p>Hei, følgende person har fyllt ut skjema på akeryachts.no:</p><p>Navn: "+name+"</p><p>E-post: "+email+"</p>";
 	
 	if (quisquiliae != ""){
-		return;	
-	}
+		return;
+	} else if (name == "" || email == "") {
+		$(data).parent().append("<p class=\"red\">Du må nok fylle ut feltene...</p>");
+		l.stop();
+	} else {
 	
-	// Send e-mail with data
-	$.ajax({
-		type: "POST",
-		url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-		data: {
-			'key': '-qbBXZsthNoZGX-MmRRSrA',
-			'message': {
-		  	'from_email': 'verdivurdering@akeryachts.no',
-		  	'to': [
-					{
-					'email': 'verdivurdering@akeryachts.no',
-					'type': 'to'
-					}
-				],
-		  	'autotext': 'true',
-		  	'subject': 'Ønske om verdivurdering fra AkerYachts.no',
-		  	'html': html,
+		// Send e-mail with data
+		$.ajax({
+			type: "POST",
+			url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+			data: {
+				'key': '-qbBXZsthNoZGX-MmRRSrA',
+				'message': {
+				'from_email': 'verdivurdering@akeryachts.no',
+				'to': [
+						{
+						'email': 'verdivurdering@akeryachts.no',
+						'type': 'to'
+						}
+					],
+				'autotext': 'true',
+				'subject': 'Ønske om verdivurdering fra AkerYachts.no',
+				'html': html,
+				}
 			}
-	 	}
-	 }).done(function(response) {
-	 	console.log(response); // if you're into that sorta thing
-		//$("#verdivurdering").html("<h3>Tusen takk, vi tar kontakt!</h3>");
-		$(data).replaceWith("<p class=\"red\">Tusen takk, vi tar kontakt!</p>");
-		callback();
-	 });
-	
+		 }).done(function(response) {
+			console.log(response); // if you're into that sorta thing
+			//$("#verdivurdering").html("<h3>Tusen takk, vi tar kontakt!</h3>");
+			$(data).replaceWith("<p class=\"red\">Tusen takk, vi tar kontakt!</p>");
+			callback();
+		 });
+	}
 	
 }
