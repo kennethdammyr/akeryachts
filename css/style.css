@@ -55,6 +55,10 @@ body {
 	opacity:0.9;
 }
 
+.navbar-header {
+	margin-left: 15px;
+}
+
 #verdivurdering {
 	background-color: #000;
 	opacity: 0.85;
