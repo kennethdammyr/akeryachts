@@ -356,9 +356,9 @@ function processVerdiVurdering(data, callback){
 	// Prepare data
 	var inputs	= $(data).parent().find("input");
 	var name	= inputs[0].value;
-	var email	= inputs[1].value;
+	var tlf		= inputs[1].value;
 	var quisquiliae = inputs[2].value;
-	var html	= "<h1>Ny verdivurdering</h1><p>Hei, følgende person har fyllt ut skjema på akeryachts.no:</p><p>Navn: "+name+"</p><p>E-post: "+email+"</p>";
+	var html	= "<h1>Ny verdivurdering</h1><p>Hei, følgende person har fyllt ut skjema på akeryachts.no:</p><p>Navn: "+name+"</p><p>Tlf: "+tlf+"</p>";
 	
 	if (quisquiliae != ""){
 		return;
