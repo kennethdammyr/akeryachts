@@ -362,7 +362,7 @@ function processVerdiVurdering(data, callback){
 	
 	if (quisquiliae != ""){
 		return;
-	} else if (name == "" || email == "") {
+	} else if (name == "" || tlf == "") {
 		$(data).parent().append("<p class=\"red\">Du må nok fylle ut feltene...</p>");
 		l.stop();
 	} else {
