@@ -138,6 +138,7 @@ function loadPage(page){
 
 function createServices($page){
 	$page = $page || $(document);
+	//Bugfix has been done
 	var source   = $("#list-template").html();
 	var template = Handlebars.compile(source);
 
