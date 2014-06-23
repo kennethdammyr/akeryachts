@@ -6,11 +6,14 @@ var pages = {
 
 function getPageHash(hash) {
 	hash = hash || location.hash;
-	var index = hash.indexOf("#");
-	
+	var index	= hash.indexOf("#");
+	var page	= "";
 	if(index > -1) {
-		return hash.substr(index+1);
-	}	
+		page = hash.substr(index+1);
+	}
+	
+	// Remove ! used for SEO
+	return page.split('!')[1];
 }
 
 function loadSpinner(done){
@@ -116,6 +119,8 @@ function loadPage(page){
 		page = "main";	
 	}
 	
+	
+	
 	$("#content").load("inc/" + page + ".html", function(response, status, xhr){
 	if (page != "main"){$("#content").removeClass("main-bg");}
 		if (status == "error"){
@@ -132,11 +137,12 @@ function loadPage(page){
 }
 
 function createServices($page){
-	$page = $page || $(document);
+	//$page = $page || $(document);
 	var source   = $("#list-template").html();
 	var template = Handlebars.compile(source);
 
 	apiCall("tjenester", false, 0,function(data){
+		console.log("kom tilbake fra kall");
 		// Vi sorterer etter vekting 
 		data.sort(function(a,b){
 			return b.vekting - a. vekting; 
@@ -291,7 +297,7 @@ function giveError(error, xhr){
 }
 	
 function apiCall(src, random, limit, done){
-	console.log("Gjør API-kall");
+	console.log("Gjør API-kall på: ", src);
 
 	// Random-function
 	function pickRandomProperty(obj) {var result; var count = 0; for (var prop in obj) if (Math.random() < 1/++count)result = prop; return result;}
@@ -306,9 +312,11 @@ function apiCall(src, random, limit, done){
 			var int = pickRandomProperty(data);
 			done(data[int]);
 		} else {
+			
 			done(data);
 		}
 	}).fail(function(jqxhr, textStatus, error){
+		console.log("nei nei nei nei", textStatus);
 		giveError(error, jqxhr);
 	});
 }
