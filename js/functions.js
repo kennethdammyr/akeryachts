@@ -137,7 +137,7 @@ function loadPage(page){
 }
 
 function createServices($page){
-	//$page = $page || $(document);
+	$page = $page || $(document);
 	var source   = $("#list-template").html();
 	var template = Handlebars.compile(source);
 
