@@ -122,7 +122,7 @@ function loadPage(page){
 	
 	
 	$("#content").load("inc/" + page + ".html", function(response, status, xhr){
-	if (page != "main"){$("#content").removeClass("main-bg");}
+        if (page != "main"){$("#content").removeClass("main-bg");}
 		if (status == "error"){
 			giveError(status, xhr);
 		}

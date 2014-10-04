@@ -143,7 +143,7 @@ foreach ($entries as $entry) {
 			switch($field->attributes()->name){
 				
 				case "description":
-					$boat['description'] = (string) $field;
+					$boat['description'] = strip_tags( (string) $field );
 					break;
 				case "equipment":
 					$boat['equipment'] = (string) $field;
