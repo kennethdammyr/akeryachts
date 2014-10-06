@@ -223,6 +223,16 @@ function createMain(){
 	$(".glyphicon-remove").on('click', function($el){
 		$(this).parent().fadeOut(300);
 	});
+    createContact();
+}
+
+function createContact(){
+    apiCall('kontakt', 'false', 0, function(data){
+        console.log(data);
+        //$('#visit_adress').    
+    });
+    
+    
 }
 
 function createBoats() {
