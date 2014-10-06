@@ -231,10 +231,8 @@ function createContact(){
         console.log(kontakt.besoksadresse);
         $('#visit_adress').append("<h3>Besøksadresse</h3>", kontakt.besoksadresse);
         $('#postal_adress').append("<h3>Postadresse</h3>", kontakt.postadresse);
-        
+        $('#contact').append("<h3>Kontaktinfo</h3>E-post: <a href='mailto:"+kontakt.email+"'>"+kontakt.email+"</a><br />Telefon: <a href='tel:"+kontakt.tlf+"'>"+kontakt.tlf+"</a>")
     });
-    
-    
 }
 
 function createBoats() {
