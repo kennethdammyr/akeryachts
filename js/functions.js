@@ -228,9 +228,9 @@ function createMain(){
 function createContact(){
     console.log("Vi kjører kontaktgenerering");
     apiCall('kontakt', false, 0, function(kontakt){
-        console.log(kontakt);
+        console.log(kontakt.besoksadresse);
         $('#visit_adress').html("<h3>Besøksadresse</h3>", kontakt.besoksadresse);
-        $('#postal_adress').html("<h3>Postadresse</h3>", kontakt.postadresse);
+        $('#postal_adress').append("<h3>Postadresse</h3>", kontakt.postadresse);
         
     });
     
