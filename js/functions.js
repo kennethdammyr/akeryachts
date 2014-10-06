@@ -356,7 +356,7 @@ function initQuoteLoop(){
 
 function changeQuote(blockquote) {
 	console.log("Changing blockquote...", blockquote);
-	apiCall("sitater",true,0,function(data){		
+	apiCall("sitater/",true,0,function(data){		
 		$(blockquote).fadeOut('slow', function(){
 			$(blockquote).html("<p>"+data.sitat+"</p><footer>"+data.forfatter+"</footer>");	
 			$(blockquote).fadeIn('slow');
