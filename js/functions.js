@@ -223,7 +223,6 @@ function createMain(){
 	$(".glyphicon-remove").on('click', function($el){
 		$(this).parent().fadeOut(300);
 	});
-    createContact();
 }
 
 function createContact(){
