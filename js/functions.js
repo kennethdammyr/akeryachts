@@ -350,7 +350,7 @@ function initQuoteLoop(){
 		console.log("Found Blockquote with id:", index);
 		var blockquote = this;
 		changeQuote(this);
-		setInterval(function(){changeQuote(blockquote);},25000);
+		//setInterval(function(){changeQuote(blockquote);},25000);
 	});
 }
 
