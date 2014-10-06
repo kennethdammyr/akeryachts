@@ -228,9 +228,11 @@ function createMain(){
 
 function createContact(){
     console.log("Vi kjører kontaktgenerering");
-    apiCall('kontakt', false, 0, function(data){
-        console.log(data);
-        //$('#visit_adress').    
+    apiCall('kontakt', false, 0, function(kontakt){
+        console.log(kontakt);
+        $('#visit_adress').html("<h3>Besøksadresse</h3>", kontakt.besoksadresse);
+        $('#postal_adress').html("<h3>Postadresse</h3>", kontakt.postadresse);
+        
     });
     
     
