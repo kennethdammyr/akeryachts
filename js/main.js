@@ -12,7 +12,6 @@ $(document).ready(function () {
 	});
 	
 	$("#footer").load("inc/footer.html", function (){
-		console.log("Henta footer");
         createContact();
 		initMap();
 	});
