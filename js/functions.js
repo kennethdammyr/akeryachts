@@ -227,7 +227,8 @@ function createMain(){
 }
 
 function createContact(){
-    apiCall('kontakt', 'false', 0, function(data){
+    console.log("Vi kjører kontaktgenerering");
+    apiCall('kontakt', false, 0, function(data){
         console.log(data);
         //$('#visit_adress').    
     });
