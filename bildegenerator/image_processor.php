@@ -26,7 +26,7 @@ if ($_FILES["image"]["error"] > 0) {
 	$overlay = WideImage::load($overlay_image);
 
 	// 2. Resize and crop
-	$resized_image = $tmp_img->resize($final_width, $final_height, 'outside')->crop('center', 'middle', $final_width, $final_height);
+	$resized_image = $tmp_img->resize($final_width, $final_height, 'outside');
 
 	// 3. Overlay image
 	$finished_image = $resized_image->merge($overlay, "right", "top");
