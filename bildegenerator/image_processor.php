@@ -9,7 +9,7 @@ include 'lib/WideImage.php';
 // 0. Set parameters
 $final_width	= 800;
 $final_height	= 600;
-$jpeg_quality	= 50;
+$jpeg_quality	= 90;
 $overlay_image	= "finn-overlay.png";
 $upload_folder	= "upload/";
 $filename		= $_FILES["image"]['name'];
