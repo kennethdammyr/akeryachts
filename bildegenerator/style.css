@@ -1,0 +1,13 @@
+body {
+	background-color: #3b3c3c;
+	color: #ff4216;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#image {
+	width: 200px;
+}
+
+h2 {
+	color: #0a5b81;
+}

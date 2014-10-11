@@ -12,3 +12,4 @@ minify_css.php
 pullweb.php
 .htaccess
 img/team/*
+bildegenerator/upload/*
