@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>AkerYachts Bildegenerator</title>
+		<title>Aker Yachts Bildegenerator</title>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,300italic|Cinzel' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="style.css">
