@@ -329,6 +329,25 @@ h4 {
 	padding-left: 15px;
 }
 
+/* AGENTURER */
+.agenturbrand {
+    background-color: #fff;
+    -webkit-box-shadow: 0px 12px 19px -2px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 12px 19px -2px rgba(0,0,0,0.25);
+	box-shadow: 0px 12px 19px -2px rgba(0,0,0,0.25);
+}
+
+.agenturimage {
+    padding: 0px;
+    margin: 0px;
+}
+
+.agenturtext {
+    background-color: #fff;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
 /* TYPOGRAFI */
 
 h1 {

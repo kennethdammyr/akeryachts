@@ -1,7 +1,8 @@
 var pages = {
 	"tjenester": createServices,
 	"meglere": createBrokers,
-	"bater": createBoats
+	"bater": createBoats,
+    "agenturer": createAgenturer
 };
 
 function getPageHash(hash) {
@@ -223,6 +224,12 @@ function createMain(){
 	$(".glyphicon-remove").on('click', function($el){
 		$(this).parent().fadeOut(300);
 	});
+}
+
+function createAgenturer(){
+    
+
+	removeSpinner();
 }
 
 function createContact(){
