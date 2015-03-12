@@ -13,3 +13,4 @@ pullweb.php
 .htaccess
 img/team/*
 bildegenerator/upload/*
+server.js
