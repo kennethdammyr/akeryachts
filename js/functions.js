@@ -194,13 +194,16 @@ function createBrokers(){
 		console.log("Midten: ",middle);
 		
 		$(data).each(function(megler){
-			if (i == middle){
+			/*
+            if (i == middle){
 				$("#meglere").append("<section class='row megler' id='brokerbg1'><div class='col-xs-10 col-xs-offset-1 firstrow'><blockquote></blockquote></div</section>");
 				$("#meglere").append(template(data[megler]));
 				initQuoteLoop();
 			} else {
-				$("#meglere").append(template(data[megler])).addClass("firstrow");;
+				
 			}
+            */
+            $("#meglere").append(template(data[megler])).addClass("firstrow");
 		 i = i+1;
 		});
 		removeSpinner();
