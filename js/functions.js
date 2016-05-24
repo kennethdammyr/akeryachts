@@ -399,7 +399,7 @@ function processVerdiVurdering(data, callback){
 			type: "POST",
 			url: 'https://mandrillapp.com/api/1.0/messages/send.json',
 			data: {
-				'key': '-qbBXZsthNoZGX-MmRRSrA',
+				'key': 'wpCnB46LhMQYxR9bFMiqTQ',
 				'message': {
 				'from_email': 'verdivurdering@akeryachts.no',
 				'to': [
